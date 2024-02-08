@@ -1,8 +1,13 @@
 import React from 'react'
 
+
 const Dashboard = () => {
+
   return (
-    <div></div>
+
+<div className="text-lg ">
+ happy coding
+</div>
   )
 }
 

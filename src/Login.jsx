@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import  axios  from 'axios';
+import { useNavigate ,Link} from 'react-router-dom'
 
 const Login = () => {
+
+    const history = useNavigate();
 
     const [email ,setEmail] = useState('');
     const [ password ,setPassword] = useState('')
@@ -12,11 +15,14 @@ const Login = () => {
         e.preventDefault();
         try{
             const response = await axios.post('http://localhost:9000/user/login' , {email , password});
+            if(response.data.message == 'Authentication Successful'){
+                history("/dashboard")
+            }
             console.log(response);
         }
         catch(error)
         {
-            console.log(error.response.data.error);
+            console.log(error);
         }
     }
   return (
