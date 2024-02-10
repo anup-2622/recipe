@@ -1,13 +1,8 @@
 import React from 'react'
 
-
 const Dashboard = () => {
-
   return (
-
-<div className="text-lg ">
- happy coding
-</div>
+    <div>Dashboard</div>
   )
 }
 
