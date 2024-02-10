@@ -27,7 +27,7 @@ const Login = () => {
   };
   return (
     <div className="flex justify-center max-w-full min-h-screen bg-blue-300 md:items-center md:justify-center md:h-screen ">
-      <div className="flex flex-col w-full m-auto mx-2 border rounded-lg h-fit md:w-2/5 md:h-1/2">
+      <div className="flex flex-col w-full m-auto mx-2 border rounded-lg h-fit md:w-2/5 md:h-fit">
         <div className="py-2 my-2 font-serif text-3xl font-extrabold text-center ">
           <p>LOGIN</p>
         </div>
@@ -70,20 +70,31 @@ const Login = () => {
               />
               <div className=" text-end">
                 <a href="" className="text-xs text-none">
-                  
-                forgot password
+                  forgot password
                 </a>
               </div>
             </div>
             <div className="my-3 group w-72 md:-80 lg:w-96">
               <button
                 type="submit"
-                className="p-2 px-4 bg-blue-400 border rounded-md hover:bg-blue-300"
+                className="w-full py-2 font-medium bg-blue-400 rounded-md text-2lg hover:bg-blue-300"
               >
                 Login
               </button>
             </div>
           </form>
+        </div>
+        
+        <div className="flex flex-col items-center justify-center mx-2 md:h-full md:mx-0">
+          <div className="flex items-center w-full py-3 justify-evenly">
+
+            <div className="p-2 border rounded-md">google</div>
+            <div className="p-2 border rounded-md">Github</div>
+            <div className="p-2 border rounded-md">facebook</div>
+          </div>
+        <div className="m-3 text-center md:f-full md:mx-0">
+          <p className="text-gray-200 ">Don't have an account? <a href="" className="text-blue-900 ">Sign Up</a> </p>
+        </div>
         </div>
       </div>
     </div>
