@@ -7,9 +7,17 @@ const Recipe = () => {
 
 
   const handleSubmit = async (e)=>{
+    e.preventDefault();
     try{
+      // const recipeRes = await Axios.post();
 
-    }caches
+        console.log(recipeName)
+        setRecipeName('');
+        // setIngredients('');
+        // setSteps('');
+    }catch(error){
+      console.log(error);
+    }
 
   }
 
@@ -34,7 +42,7 @@ const Recipe = () => {
   };
 
   const addIngredient = () => {
-    setIngredients([...ingredients, { name: "", marks: "" }]);
+    setIngredients([...ingredients, { name: "", quantity: "" }]);
   };
 
   const removeSteps = (index) => {
@@ -56,8 +64,8 @@ const Recipe = () => {
           <h2>Add Your Recipe</h2>
         </div>
         <div className="flex items-center justify-center mx-2 md:h-full md:mx-0 ">
-          <form action="">
-            <div className="relative my-3 border md:w-80 lg:w-96 ">
+          <form action="" onSubmit={handleSubmit}>
+            <div className="relative my-3 border md:w-full lg:w-full ">
               <label
                 htmlFor="recipeName"
                 className="block w-full pb-1 font-serif text-sm group-focus-within:text-blue-400"
@@ -66,7 +74,7 @@ const Recipe = () => {
               </label>
               <input
                 type="text"
-                className="w-full p-1 outline-none"
+                className="w-full h-10 px-4 font-thin transition-all duration-200 ease-in-out rounded-md outline-none peer bg-gray-50 drop-shadow-sm focus:bg-white focus:ring-2 focus:ring-blue-400"
                 placeholder="Your Lovely Recipe "
                 value={recipeName}
                 onChange={(e)=> setRecipeName(e.target.value)}
@@ -77,12 +85,12 @@ const Recipe = () => {
                 key={index}
                 className="relative my-3 border md:w-fit lg:w-fit"
               >
-                <label htmlFor="" className="block">
+                <label htmlFor="" className="block w-full pb-1 text-sm font-medium text-gray-500 transition-all duration-200 ease-in-out group-focus-within:text-blue-400">
                   Ingredients
                 </label>
                 <input
                   type="text"
-                  className="w-42"
+                  className="h-10 px-4 font-thin transition-all duration-200 ease-in-out rounded-md outline-none w-fit peer bg-gray-50 drop-shadow-sm focus:bg-white focus:ring-2 focus:ring-blue-400"
                   placeholder="Black Salt/Soda Lime"
                   value={ingredient.name}
                   onChange={(e) =>
@@ -91,6 +99,7 @@ const Recipe = () => {
                 />
                 <input
                   type="text"
+                  className="h-10 px-4 mx-2 font-thin transition-all duration-200 ease-in-out rounded-md outline-none w-fit peer bg-gray-50 drop-shadow-sm focus:bg-white focus:ring-2 focus:ring-blue-400"
                   placeholder="Quntity"
                   value={ingredient.quantity}
                   onChange={(e) =>
@@ -99,7 +108,7 @@ const Recipe = () => {
                 />
                 <button
                   onClick={() => removeIngredient(index)}
-                  className="w-6 h-6 text-center border rounded-full button"
+                  className="h-10 px-3 text-center text-white bg-red-600 border rounded w-fit button"
                 >
                   remove
                 </button>
@@ -112,11 +121,12 @@ const Recipe = () => {
             </div>
             {steps.map((step, index) => (
               <div key={index} className="relative border">
-                <label htmlFor="" className="block">
+                <label htmlFor="" className="block w-full pb-1 text-sm font-medium text-gray-500 transition-all duration-200 ease-in-out group-focus-within:text-blue-400">
                   Steps
                 </label>
                 <input
                   type="text"
+                  className="h-10 px-4 font-thin transition-all duration-200 ease-in-out rounded-md outline-none w-fit peer bg-gray-50 drop-shadow-sm focus:bg-white focus:ring-2 focus:ring-blue-400"
                   value={step.stepDetails}
                   onChange={(e) =>
                     handleStepDetails(index, "stepDetails", e.target.value)
@@ -125,6 +135,7 @@ const Recipe = () => {
                 />
                 <input
                   type="file"
+                  className="h-10 px-4 font-thin transition-all duration-200 ease-in-out rounded-md outline-none w-fit peer bg-gray-50 drop-shadow-sm focus:bg-white focus:ring-2 focus:ring-blue-400"
                   value={step.file}
                   onChange={(e) =>
                     handleStepDetails(index, "file", e.target.value)
@@ -152,7 +163,7 @@ const Recipe = () => {
               <textarea name="" id="" cols="" rows=""></textarea>
             </div>
             <div className="">
-              <button className="p-2 bg-green-400 border rounded-md hover:bg-green-300">Add Recipe</button>
+              <button type='submit' className="p-2 bg-green-400 border rounded-md hover:bg-green-300">Add Recipe</button>
             </div>
           </form>
         </div>
