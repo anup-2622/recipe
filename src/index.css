@@ -18,6 +18,20 @@ code {
 
 .signup , .login{
   background-image: url(../src/assets/bg.jpg);
+}
+.recipe{
+  background-image: url(../src/assets/recipe_bg.jpg);
+  /* transform: rotate(0deg); */
+  /* background-repeat: no-repeat; */
+
+  background-size: cover;
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover;
+  overflow-x: hidden; 
+  
+    position: fixed;
+    z-index: -1;
 
 }
 

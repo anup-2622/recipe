@@ -56,14 +56,15 @@ const Recipe = () => {
   };
 
   return (
-    <div className="flex items-center justify-center bg-blue-300 max-h-max min-w-screen md:bg-red-300 md:w-screen md:h-screen">
-      <div className="bg-yellow-100 md:w-3/4 md:h-fit">
-        <div className="py-2 my-2 font-serif text-3xl font-extrabold text-center">
+    <div className="recipe scroll-smooth lg:h-screen lg:w-screen md:w-screen md:h-screen">
+    <div className="flex items-center justify-center backdrop-blur-md ">
+      <div className=" lg:w-5/6 lg:h-full">
+        <div className="py-2 my-2 font-serif text-3xl font-extrabold text-center text-white">
           <h2>Add Your Recipe</h2>
         </div>
-        <div className="flex items-center justify-center mx-2 md:h-full md:mx-0 ">
+        <div className="mx-2 md:h-full md:mx-0">
           <form action="" onSubmit={handleSubmit}>
-            <div className="relative my-3 border md:w-full lg:w-full ">
+            <div className="my-3 border md:w-full lg:w-full">
               <label
                 htmlFor="recipeName"
                 className="block w-full pb-1 font-serif text-sm group-focus-within:text-blue-400"
@@ -78,10 +79,9 @@ const Recipe = () => {
                 onChange={(e) => setRecipeName(e.target.value)}
               />
             </div>
+            <div className="flex flex-wrap">
             {ingredients.map((ingredient, index) => (
-              <div
-                key={index}
-                className="relative my-3 border md:w-fit lg:w-fit"
+              <div key={index}  className="relative my-3 border md:w-fit lg:w-fit"
               >
                 <label
                   htmlFor=""
@@ -124,8 +124,8 @@ const Recipe = () => {
                   </button>
                 )}
               </div>
-            ))}
-          
+            ))}   
+            </div>       
             {steps.map((step, index) => (
               <div key={index} className="flex border">
                 <label
@@ -208,6 +208,7 @@ const Recipe = () => {
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 };
