@@ -12,9 +12,9 @@ const [password , setPassword] = useState('');
     }
     return (
     <div>
-           <div className="flex justify-center max-w-full min-h-screen bg-blue-300 md:items-center md:justify-center md:h-screen ">
-      <div className="flex flex-col w-full m-auto mx-2 border rounded-lg h-fit md:w-2/5 md:h-fit">
-        <div className="py-2 my-2 font-serif text-3xl font-extrabold text-center ">
+           <div className="flex justify-center max-w-full min-h-screen bg-blue-300 signup md:items-center md:justify-center md:h-screen ">
+      <div className="flex flex-col w-full m-auto mx-2 border rounded-lg shadow-lg h-fit backdrop-blur-lg shadow-black md:w-2/5 md:h-fit">
+        <div className="py-2 my-2 font-serif text-3xl font-extrabold text-center text-white ">
           <p>Create Your Account</p>
         </div>
         <div className="flex items-center justify-center mx-2 md:h-full md:mx-0">
@@ -92,7 +92,7 @@ const [password , setPassword] = useState('');
             <div className="p-2 border rounded-md">facebook</div>
           </div>
         <div className="m-3 text-center md:f-full md:mx-0">
-          <p className="text-gray-200 ">Already have an account ? <a href="" className="text-blue-900 ">Login</a> </p>
+          <p className="text-black ">Already have an account ? <a href="" className="text-blue-900 ">Login</a> </p>
         </div>
         </div>
       </div>

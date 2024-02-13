@@ -16,4 +16,9 @@ code {
     monospace;
 }
 
+.signup , .login{
+  background-image: url(../src/assets/bg.jpg);
+
+}
+
 
