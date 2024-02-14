@@ -67,36 +67,37 @@ const Recipe = () => {
           </div>
           <div className="mx-2 md:h-full md:mx-0">
             <form action="" onSubmit={handleSubmit}>
-              <div className="my-3 border md:w-full lg:w-full">
-                <label
-                  htmlFor="recipeName"
-                  className="block w-full pb-1 font-serif text-sm group-focus-within:text-blue-400"
-                >
+              <fieldset className="px-5 my-1 border rounded-md">
+                <legend className="px-3 py-1 text-white rounded-md bg-zinc-800">
                   Recipe Name
-                </label>
-                <input
-                  type="text"
-                  className="w-full h-10 px-4 font-thin transition-all duration-200 ease-in-out rounded-md outline-none peer bg-gray-50 drop-shadow-sm focus:bg-white focus:ring-2 focus:ring-blue-400"
-                  placeholder="Your Lovely Recipe "
-                  value={recipeName}
-                  onChange={(e) => setRecipeName(e.target.value)}
-                />
-              </div>
-              <fieldset className="px-5 border rounded-md">
+                </legend>
+                <div className="my-1 md:w-full lg:w-full">
+                  <input
+                    type="text"
+                    className="w-full h-10 px-4 font-thin transition-all duration-200 ease-in-out rounded-md outline-none peer bg-gray-50 drop-shadow-sm focus:bg-white focus:ring-2 focus:ring-blue-400"
+                    placeholder="Your Lovely Recipe "
+                    value={recipeName}
+                    required
+                    onChange={(e) => setRecipeName(e.target.value)}
+                  />
+                </div>
+              </fieldset>
+              <fieldset className="px-5 my-1 border rounded-md">
                 <legend className="px-3 py-1 text-white rounded-md bg-zinc-800">
                   Ingredients
                 </legend>
 
-                <div className="flex flex-wrap">
+                <div className="flex flex-wrap items-center">
                   {ingredients.map((ingredient, index) => (
                     <div
                       key={index}
-                      className="my-1 border md:border-none md:w-fit lg:w-fit"
+                      className="flex items-center gap-2 my-1 border md:border-none md:w-1/3 lg:w-1/3"
                     >
                       <input
                         type="text"
-                        className="h-10 px-4 font-thin transition-all duration-200 ease-in-out rounded-md outline-none bg-gray-50 drop-shadow-sm focus:bg-white focus:ring-2 focus:ring-blue-400"
+                        className="w-40 h-8 px-4 font-thin transition-all duration-200 ease-in-out rounded-md outline-none bg-gray-50 drop-shadow-sm focus:bg-white focus:ring-2 focus:ring-blue-400"
                         placeholder="Black Salt/Soda Lime"
+                        required
                         value={ingredient.name}
                         onChange={(e) =>
                           handleIngredientsChange(index, "name", e.target.value)
@@ -104,8 +105,9 @@ const Recipe = () => {
                       />
                       <input
                         type="text"
-                        className="h-10 px-4 font-thin transition-all duration-200 ease-in-out rounded-md outline-none peer bg-gray-50 drop-shadow-sm focus:bg-white focus:ring-2 focus:ring-blue-400"
+                        className="w-40 h-8 px-4 font-thin transition-all duration-200 ease-in-out rounded-md outline-none peer bg-gray-50 drop-shadow-sm focus:bg-white focus:ring-2 focus:ring-blue-400"
                         placeholder="Quntity"
+                        required
                         value={ingredient.quantity}
                         onChange={(e) =>
                           handleIngredientsChange(
@@ -118,14 +120,14 @@ const Recipe = () => {
                       {index >= 1 ? (
                         <button
                           onClick={() => removeIngredient(index)}
-                          className="h-10 px-3 text-center text-white bg-red-600 border rounded w-fit button"
+                          className="p-2 font-extrabold text-center text-white bg-red-600 border-none rounded w-fit "
                         >
                           <IoRemoveCircleOutline />
                         </button>
                       ) : (
                         <button
                           type="button"
-                          className="p-2 bg-green-500 rounded w-fit"
+                          className= "p-2 font-bold text-white bg-green-500 rounded px3 w-fit"
                           onClick={addIngredient}
                         >
                           <IoAddCircleOutline />
@@ -135,21 +137,21 @@ const Recipe = () => {
                   ))}
                 </div>
               </fieldset>
-              <fieldset className="px-5 border rounded-md">
+              <fieldset className="px-5 my-1 border rounded-md">
                 <legend className="px-3 py-1 text-white rounded-md bg-zinc-800">
-                  STEPS</legend>
+                  STEPS
+                </legend>
                 <div className="flex flex-wrap ">
                   {steps.map((step, index) => (
-                    <div key={index} className="flex border">
-                      {/* <label
-                    htmlFor=""
-                    className="block pb-1 text-sm font-medium text-gray-500 transition-all duration-200 ease-in-out w-fit group-focus-within:text-blue-400"
-                  > */}
-                      {/* Steps */}
+                    <div
+                      key={index}
+                      className="flex my-1 border md:border-none md:w-fit lg:w-fit"
+                    >
                       <input
                         type="text"
                         className="h-10 px-4 font-thin transition-all duration-200 ease-in-out rounded-md outline-none w-fit peer bg-gray-50 drop-shadow-sm focus:bg-white focus:ring-2 focus:ring-blue-400"
                         value={step.stepDetails}
+                        required
                         onChange={(e) =>
                           handleStepDetails(
                             index,
@@ -166,6 +168,7 @@ const Recipe = () => {
                         </span>
                         <input
                           type="file"
+                          required
                           value={step.file}
                           onChange={(e) =>
                             handleStepDetails(index, "file", e.target.value)
@@ -208,13 +211,15 @@ const Recipe = () => {
                 </div>
               </fieldset>
 
-              <div className="relative border md:w-fit">
-                <label htmlFor="" className="block">
+              <fieldset className="px-5 my-1 border rounded-md">
+                <legend className="px-3 py-1 text-white rounded-md bg-zinc-800">
                   Discription
-                </label>
-                <textarea name="" id="" cols="" rows=""></textarea>
-              </div>
-              <div className="">
+                </legend>
+                <div className="relative my-2 rounded-md md:w-full">
+                  <textarea name="" id="" cols="" rows="4" className="w-full px-4 py-2 text-sm text-gray-900 placeholder-gray-900 bg-white border-0 rounded-md focus:ring-0" placeholder="Write more Descripotion "></textarea>
+                </div>
+              </fieldset>
+              <div className="my-2">
                 <button
                   type="submit"
                   className="p-2 bg-green-400 border rounded-md hover:bg-green-300"
