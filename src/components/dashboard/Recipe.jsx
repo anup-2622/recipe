@@ -8,25 +8,27 @@ const Recipe = () => {
   const [recipeName, setRecipeName] = useState("");
   const [ingredients, setIngredients] = useState([{ name: "", quantity: "" }]);
   const [steps, setSteps] = useState([{ stepDetails: "", file: null }]);
-  const addRecipeUrl = '';
+  const addRecipeUrl = 'http://localhost:9000/recipe/createRecipe';
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       // const recipeRes = await Axios.post();
-      // const myRecipe = await axios.post( addRecipeUrl ,{
-      //   recipeName,
-      //   ingredients,
-      //    steps
-      // })
-      const myRecipe ={
+      const myRecipe = await axios.post( addRecipeUrl ,{
         recipeName,
         ingredients,
          steps
-      }
-// console.log(myRecipe);
-      setRecipeName("");
-      setIngredients([{ name: "", quantity: "" }]);
-      setSteps([{ stepDetails: "", file: null }]);
+      })
+      // const myRecipe ={
+      //   recipeName,
+      //   ingredients,
+      //    steps
+      // }
+      console.log(myRecipe.data)
+      // const conv = JSON.parse(myRecipe)
+console.log( typeof(myRecipe));
+      // setRecipeName("");
+      // setIngredients([{ name: "", quantity: "" }]);
+      // setSteps([{ stepDetails: "", file: null }]);
    
         toast.success("Recipe Submitted");
   
