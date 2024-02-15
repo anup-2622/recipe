@@ -89,7 +89,7 @@ const Recipe = () => {
 
                 <div className="flex flex-wrap items-center">
                   {ingredients.map((ingredient, index) => (
-                    <div
+                    <div  
                       key={index}
                       className="flex items-center gap-2 my-1 border md:border-none md:w-1/3 lg:w-1/3"
                     >
@@ -120,14 +120,14 @@ const Recipe = () => {
                       {index >= 1 ? (
                         <button
                           onClick={() => removeIngredient(index)}
-                          className="p-2 font-extrabold text-center text-white bg-red-600 border-none rounded w-fit "
+                          className="p-2 font-extrabold text-center text-white bg-red-500 border-none rounded hover:bg-red-400 w-fit "
                         >
                           <IoRemoveCircleOutline />
                         </button>
                       ) : (
                         <button
                           type="button"
-                          className= "p-2 font-bold text-white bg-green-500 rounded px3 w-fit"
+                          className="p-2 font-bold text-white bg-green-500 rounded hover:bg-green-400 px3 w-fit"
                           onClick={addIngredient}
                         >
                           <IoAddCircleOutline />
@@ -141,15 +141,15 @@ const Recipe = () => {
                 <legend className="px-3 py-1 text-white rounded-md bg-zinc-800">
                   STEPS
                 </legend>
-                <div className="flex flex-wrap ">
+                <div className="flex flex-wrap items-center">
                   {steps.map((step, index) => (
                     <div
                       key={index}
-                      className="flex my-1 border md:border-none md:w-fit lg:w-fit"
+                      className="flex items-center gap-1 my-1 md:border-none md:w-1/3 lg:w-1/3"
                     >
                       <input
                         type="text"
-                        className="h-10 px-4 font-thin transition-all duration-200 ease-in-out rounded-md outline-none w-fit peer bg-gray-50 drop-shadow-sm focus:bg-white focus:ring-2 focus:ring-blue-400"
+                        className="w-40 h-8 px-4 font-thin transition-all duration-200 ease-in-out rounded-md outline-none peer bg-gray-50 drop-shadow-sm focus:bg-white focus:ring-2 focus:ring-blue-400"
                         value={step.stepDetails}
                         required
                         onChange={(e) =>
@@ -162,9 +162,10 @@ const Recipe = () => {
                         placeholder="Enter Your Step Details"
                       />
                       {/* </label> */}
-                      <label class="flex flex-col w-fit h-fit p-2 items-center text-center justify-center bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue ">
+                      {/* <label 
+                        title="Choose your File" class="flex flex-col   p-2 items-center text-center justify-center bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue ">
                         <span class="">
-                          <FaFile />
+                          <FaFile /> 
                         </span>
                         <input
                           type="file"
@@ -173,37 +174,36 @@ const Recipe = () => {
                           onChange={(e) =>
                             handleStepDetails(index, "file", e.target.value)
                           }
-                          class="hidden"
+                          class=""
                         />
-                      </label>
-
-                      {/* <label htmlFor="" className="flex flex-col items-center w-64 px-4 py-6 tracking-wide uppercase bg-white border rounded-lg shadow-lg cursor-pointer text-blue border-blue hover:bg-blue hover:text-white">
-                <span class="mt-2 text-base leading-normal">Select a file</span>
-                <input
-                  type="file"
-                  e}
-                onChange={(e) =>
-                  handleStepDetails(index, "file", e.target.value)
-                }
-                  className="hidden "
-                  name=""
-                  id=""
-                />
-                </label> */}
+                      </label> */}
+<input
+    type="file"
+    class="block w-44 text-sm text-white
+        file:mr-4 file:h-8 file:px-2 file:rounded-md
+        file:border-0 file:text-sm file:font-semibold
+        file:bg-pink-50 file:text-black-400
+        hover:file:bg-pink-100"
+        required
+        value={step.file}
+        onChange={(e) =>
+          handleStepDetails(index, "file", e.target.value)
+        }
+  />
                       {index >= 1 ? (
                         <button
                           onClick={() => removeSteps(index)}
-                          className="p-2 text-center bg-red-400 border rounded w-fit"
+                          className="p-2 text-center bg-red-500 rounded hover:bg-red-400 w-fit"
                         >
                           <IoRemoveCircleOutline />
                         </button>
                       ) : (
                         <button
                           type="button"
-                          className="p-2 bg-green-500 rounded w-fit"
+                          className="p-2 text-white bg-green-500 rounded hover:bg-green-400 w-fit"
                           onClick={addStep}
                         >
-                          <IoAddCircleOutline />
+                          <IoAddCircleOutline className="" />
                         </button>
                       )}
                     </div>
@@ -216,13 +216,20 @@ const Recipe = () => {
                   Discription
                 </legend>
                 <div className="relative my-2 rounded-md md:w-full">
-                  <textarea name="" id="" cols="" rows="4" className="w-full px-4 py-2 text-sm text-gray-900 placeholder-gray-900 bg-white border-0 rounded-md focus:ring-0" placeholder="Write more Descripotion "></textarea>
+                  <textarea
+                    name=""
+                    id=""
+                    cols=""
+                    rows="4"
+                    className="w-full px-4 py-2 text-sm text-gray-900 placeholder-gray-900 bg-white border-0 rounded-md focus:ring-0"
+                    placeholder="Write more Descripotion.................. "
+                  ></textarea>
                 </div>
               </fieldset>
-              <div className="my-2">
+              <div className="flex my-2 ">
                 <button
                   type="submit"
-                  className="p-2 bg-green-400 border rounded-md hover:bg-green-300"
+                  className="p-2 bg-green-400 rounded-md hover:bg-green-300"
                 >
                   Add Recipe
                 </button>
