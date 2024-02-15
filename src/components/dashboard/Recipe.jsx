@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { FaFile } from "react-icons/fa";
+import toast, { Toaster } from 'react-hot-toast';
+import axios from "axios";
 
 import { IoAddCircleOutline, IoRemoveCircleOutline } from "react-icons/io5";
 
@@ -7,16 +8,28 @@ const Recipe = () => {
   const [recipeName, setRecipeName] = useState("");
   const [ingredients, setIngredients] = useState([{ name: "", quantity: "" }]);
   const [steps, setSteps] = useState([{ stepDetails: "", file: null }]);
-
+  const addRecipeUrl = '';
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       // const recipeRes = await Axios.post();
-
-      console.log(recipeName);
+      // const myRecipe = await axios.post( addRecipeUrl ,{
+      //   recipeName,
+      //   ingredients,
+      //    steps
+      // })
+      const myRecipe ={
+        recipeName,
+        ingredients,
+         steps
+      }
+// console.log(myRecipe);
       setRecipeName("");
-      // setIngredients('');
-      // setSteps('');
+      setIngredients([{ name: "", quantity: "" }]);
+      setSteps([{ stepDetails: "", file: null }]);
+   
+        toast.success("Recipe Submitted");
+  
     } catch (error) {
       console.log(error);
     }
@@ -59,13 +72,14 @@ const Recipe = () => {
   };
 
   return (
+
     <div className="w-full h-full recipe scroll-smooth lg:h-screen lg:w-screen md:w-screen md:h-screen">
-      <div className="flex items-center justify-center backdrop-blur-md ">
+      <div className="flex items-center justify-center border lg:justify-center backdrop-blur-md ">
         <div className=" lg:w-5/6">
-          <div className="py-2 my-2 font-serif text-xl font-extrabold text-white lg:text-center md:text-center md:text-2xl lg:text-3xl">
+          <div className="py-2 my-2 font-serif text-xl font-extrabold text-center text-white lg:text-center md:text-center md:text-2xl lg:text-3xl">
             <h2>Add Your Recipe</h2>
           </div>
-          <div className="mx-2 md:h-full md:mx-0">
+          <div className=" md:h-full md:mx-2 lg:mx-2">
             <form action="" onSubmit={handleSubmit}>
               <fieldset className="px-5 my-1 border rounded-md">
                 <legend className="px-3 py-1 text-white rounded-md bg-zinc-800">
@@ -91,7 +105,7 @@ const Recipe = () => {
                   {ingredients.map((ingredient, index) => (
                     <div  
                       key={index}
-                      className="flex items-center gap-2 my-1 border md:border-none md:w-1/3 lg:w-1/3"
+                      className="flex items-center gap-2 my-1 md:border-none md:w-1/3 lg:w-1/3"
                     >
                       <input
                         type="text"
@@ -126,9 +140,9 @@ const Recipe = () => {
                         </button>
                       ) : (
                         <button
-                          type="button"
-                          className="p-2 font-bold text-white bg-green-500 rounded hover:bg-green-400 px3 w-fit"
-                          onClick={addIngredient}
+                        type="button"
+                        className="p-2 font-bold text-white bg-green-500 rounded hover:bg-green-400 px3 w-fit"
+                        onClick={addIngredient}
                         >
                           <IoAddCircleOutline />
                         </button>
@@ -144,8 +158,8 @@ const Recipe = () => {
                 <div className="flex flex-wrap items-center">
                   {steps.map((step, index) => (
                     <div
-                      key={index}
-                      className="flex items-center gap-1 my-1 md:border-none md:w-1/3 lg:w-1/3"
+                    key={index}
+                    className="flex items-center gap-1 my-1 md:border-none md:w-1/3 lg:w-1/3"
                     >
                       <input
                         type="text"
@@ -192,14 +206,14 @@ const Recipe = () => {
   />
                       {index >= 1 ? (
                         <button
-                          onClick={() => removeSteps(index)}
-                          className="p-2 text-center bg-red-500 rounded hover:bg-red-400 w-fit"
+                        onClick={() => removeSteps(index)}
+                        className="p-2 text-center bg-red-500 rounded hover:bg-red-400 w-fit"
                         >
                           <IoRemoveCircleOutline />
                         </button>
                       ) : (
                         <button
-                          type="button"
+                        type="button"
                           className="p-2 text-white bg-green-500 rounded hover:bg-green-400 w-fit"
                           onClick={addStep}
                         >
@@ -226,14 +240,16 @@ const Recipe = () => {
                   ></textarea>
                 </div>
               </fieldset>
-              <div className="flex my-2 ">
+              <div className="flex items-center justify-center my-2 lg:justify-end md:justify-end ">
                 <button
                   type="submit"
+            
                   className="p-2 bg-green-400 rounded-md hover:bg-green-300"
                 >
                   Add Recipe
                 </button>
-              </div>
+                <Toaster />
+       </div>
             </form>
           </div>
         </div>
