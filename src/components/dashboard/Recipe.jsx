@@ -105,7 +105,7 @@ const Recipe = () => {
                   {ingredients.map((ingredient, index) => (
                     <div  
                       key={index}
-                      className="flex items-center gap-2 my-1 md:border-none md:w-1/3 lg:w-1/3"
+                      className="flex items-center gap-2 my-1 md:border-none md:w-2/4 lg:w-1/3"
                     >
                       <input
                         type="text"
@@ -159,7 +159,7 @@ const Recipe = () => {
                   {steps.map((step, index) => (
                     <div
                     key={index}
-                    className="flex items-center gap-1 my-1 md:border-none md:w-1/3 lg:w-1/3"
+                    className="flex items-center gap-1 my-1 md:border-none md:w-1/2 lg:w-1/3"
                     >
                       <input
                         type="text"
@@ -175,29 +175,13 @@ const Recipe = () => {
                         }
                         placeholder="Enter Your Step Details"
                       />
-                      {/* </label> */}
-                      {/* <label 
-                        title="Choose your File" class="flex flex-col   p-2 items-center text-center justify-center bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue ">
-                        <span class="">
-                          <FaFile /> 
-                        </span>
-                        <input
-                          type="file"
-                          required
-                          value={step.file}
-                          onChange={(e) =>
-                            handleStepDetails(index, "file", e.target.value)
-                          }
-                          class=""
-                        />
-                      </label> */}
-<input
+                  <input
     type="file"
     class="block w-44 text-sm text-white
-        file:mr-4 file:h-8 file:px-2 file:rounded-md
+        file:mr-4 md:file:mr-2  file:h-8 file:px-2 file:rounded-md
         file:border-0 file:text-sm file:font-semibold
         file:bg-pink-50 file:text-black-400
-        hover:file:bg-pink-100"
+        hover:file:bg-pink-100 md:w-1/2 lg:w-44"
         required
         value={step.file}
         onChange={(e) =>
