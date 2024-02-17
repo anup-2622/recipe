@@ -41,7 +41,7 @@ const Dashboard = () => {
 
   return (
     <div className="App">
-      <h1>Student Marksheet Form</h1>
+      <h1>Student Details Form</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Name:</label>
