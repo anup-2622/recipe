@@ -8,32 +8,30 @@ const Recipe = () => {
   const [recipeName, setRecipeName] = useState("");
   const [ingredients, setIngredients] = useState([{ name: "", quantity: "" }]);
   const [steps, setSteps] = useState([{ stepDetails: "", file: null }]);
+  const [description , setDescription] = useState("");
   const addRecipeUrl = 'http://localhost:9000/recipe/createRecipe';
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // const recipeRes = await Axios.post();
-      const myRecipe = await axios.post( addRecipeUrl ,{
+      const myRecipe = await axios.post(addRecipeUrl, {
         recipeName,
         ingredients,
-         steps
-      })
-      // const myRecipe ={
-      //   recipeName,
-      //   ingredients,
-      //    steps
-      // }
-      console.log(myRecipe.data)
-      // const conv = JSON.parse(myRecipe)
-console.log( typeof(myRecipe));
-      // setRecipeName("");
-      // setIngredients([{ name: "", quantity: "" }]);
-      // setSteps([{ stepDetails: "", file: null }]);
-   
-        toast.success("Recipe Submitted");
-  
+        steps,
+        description,
+      });
+      setRecipeName("");
+      setSteps([{ stepDetails: "", file: null }])
+      setIngredients([{ name: "", quantity: "" }])
+      setDescription('');
+ 
+      console.log('Recipe added successfully:', myRecipe.data);
+      toast.success("Recipe Submitted")
+      // Clear form fields and show success message
     } catch (error) {
-      console.log(error);
+      console.error('Error adding recipe:', error);
+      // Handle error appropriately (e.g., show error message)
     }
   };
 
@@ -218,8 +216,10 @@ console.log( typeof(myRecipe));
                 <div className="relative my-2 rounded-md md:w-full">
                   <textarea
                     name=""
-                    id=""
-                    cols=""
+                    value={description}
+                  
+                    onChange={(e) => setDescription(e.target.value)}
+           
                     rows="4"
                     className="w-full px-4 py-2 text-sm text-gray-900 placeholder-gray-900 bg-white border-0 rounded-md focus:ring-0"
                     placeholder="Write more Descripotion.................. "
