@@ -5,6 +5,7 @@ import Login from './components/auth/Login';
 import Dashboard from './components/dashboard/Dashboard';
 import Signup from './components/auth/Signup';
 import Recipe from './components/dashboard/Recipe';
+import Viewrecipe from './components/dashboard/Viewrecipe';
 
 
 function App() {
