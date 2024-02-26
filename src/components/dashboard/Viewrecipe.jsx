@@ -3,7 +3,7 @@ import React from 'react'
 
 
 const Viewrecipe = (props) => {
-console.log(props);
+// console.log(props);
 
   return (
   <div className="bg-red-300 lg:w-fit lg:h-fit">

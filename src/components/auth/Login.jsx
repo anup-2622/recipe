@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+// import useAuth from 
+
 
 const Login = () => {
   const history = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isAuthenticate , setIsAuthenticate] = useState(false)
 
   // console.log(email + password);
 
@@ -18,9 +21,10 @@ const Login = () => {
         password,
       });
       if (response.data.message == "Authentication Successful") {
-        history("/dashboard");
+        history("/");
       }
-      console.log(response);
+
+      // console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -93,7 +97,7 @@ const Login = () => {
             <div className="p-2 border rounded-md">facebook</div>
           </div>
         <div className="m-3 text-center md:f-full md:mx-0">
-          <p className="text-black ">Don't have an account? <a href="" className="text-blue-900 ">Sign Up</a> </p>
+          <p className="text-black ">Don't have an account? <a href="/signup" className="text-blue-900 ">Sign Up</a> </p>
         </div>
         </div>
       </div>

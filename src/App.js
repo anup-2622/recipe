@@ -14,7 +14,7 @@ function App() {
     <Router>
         <div>
           <Routes>
-            <Route path='/' render={()=>{}} element={<Dashboard/>}/>
+            <Route path='/'  element={<Dashboard auth={isAuthenticated}/>}/>
             <Route path='/recipe' element={<Recipe/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/signup' element={<Signup/>}/>
