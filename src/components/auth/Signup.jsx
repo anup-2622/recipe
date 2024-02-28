@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import axios from "axios";
+import {Link, useNavigate} from "react-router-dom"
 import toast , {Toaster} from "react-hot-toast" 
 const Signup = () => {
-    
-
+    const navigate = useNavigate()
 const [name , setName] = useState('');
 const [email , setEmail] = useState('');
 const [password , setPassword] = useState('');
@@ -18,9 +18,11 @@ const [password , setPassword] = useState('');
             
           } )
           toast.success(signupData.data.message)
+          if(signupData.data.status){
+
+            navigate("/login")
+          }
           
-          // history("/login")
-          // console.log(signupData);
         }catch(error)
         {
           console.log(error)
@@ -109,7 +111,7 @@ const [password , setPassword] = useState('');
             <div className="p-2 border rounded-md">facebook</div>
           </div>
         <div className="m-3 text-center md:f-full md:mx-0">
-          <p className="text-black ">Already have an account ? <a href="/login" className="text-blue-900 ">Login</a> </p>
+          <p className="text-black ">Already have an account ? <Link to="/login">Login</Link> </p>
         </div>
         </div>
       </div>

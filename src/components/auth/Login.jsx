@@ -5,23 +5,27 @@ import { useNavigate, Link } from "react-router-dom";
 
 
 const Login = () => {
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isAuthenticate , setIsAuthenticate] = useState(false)
+  // const [isAuthenticate , setIsAuthenticate] = useState(false)
 
   // console.log(email + password);
+
+  axios.defaults.withCredentials = true;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:9000/user/login", {
+      const loginData = await axios.post("http://localhost:9000/user/login", {
         email,
         password,
       });
-      if (response.data.message == "Authentication Successful") {
-        history("/");
+      // console.log(loginData.data);
+      if (loginData.data.status) {
+        navigate("/");
+
       }
 
       // console.log(response);
@@ -72,12 +76,12 @@ const Login = () => {
                 minLength={8}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <div className=" text-end">
-                <a href="" className="text-xs text-none">
-                  forgot password
-                </a>
-              </div>
             </div>
+              <div className=" text-end">
+                <Link to='/forgotPassword' className="text-xs text-none">
+                  forgot password
+                </Link>
+              </div>
             <div className="my-3 group w-72 md:-80 lg:w-96">
               <button
                 type="submit"
@@ -97,7 +101,7 @@ const Login = () => {
             <div className="p-2 border rounded-md">facebook</div>
           </div>
         <div className="m-3 text-center md:f-full md:mx-0">
-          <p className="text-black ">Don't have an account? <a href="/signup" className="text-blue-900 ">Sign Up</a> </p>
+          <p className="text-black ">Don't have an account? <Link to="/signup">Sign Up</Link></p>
         </div>
         </div>
       </div>
