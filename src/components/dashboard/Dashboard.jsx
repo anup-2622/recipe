@@ -3,8 +3,22 @@ import React from 'react'
 import Viewrecipe from "./Viewrecipe";
 import axios from "axios"
 import Login from "../auth/Login";
+import {useNavigate} from "react-router-dom"
 
 const Dashboard = (props) => {
+  const navigate = useNavigate()
+
+  useEffect(()=>{
+    axios.get('/user/Verify')
+    .then((res)=>{
+      if(res.data.status){
+
+      }
+      else{
+        navigate("/")
+      }
+    })
+  })
 
   const RecipeUrl = "http://localhost:9000/recipe/getAllRecipes";
   const [recipes, setRecipes] = useState([]);

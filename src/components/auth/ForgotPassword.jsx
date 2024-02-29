@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from "axios"
 import {useNavigate} from 'react-router-dom'
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function ForgotPassword() {
     const [email , setEmail] = useState('');
@@ -13,13 +14,13 @@ const navigate = useNavigate()
           const forgotData = await axios.post("http://localhost:9000/user/forgotpassword",{
             email 
           } )
-          console.log(forgotData);
+          // console.log(forgotData);
        
           if(forgotData.data.status){
-            alert('Check Your Mail')
+         
             navigate("/login")
           }
-          console.log(forgotData.data);
+          // console.log(forgotData.data);
           
         }catch(error)
         {
