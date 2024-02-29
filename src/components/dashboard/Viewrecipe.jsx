@@ -1,6 +1,6 @@
+import { PDFDownloadLink } from '@react-pdf/renderer';
 import React from 'react'
-
-
+import RecipePdf from './RecipePdf';
 
 const Viewrecipe = (props) => {
 // console.log(props);
@@ -12,19 +12,35 @@ const Viewrecipe = (props) => {
 			<div class="text p-3 flex flex-col justify-evenly h-full">
 				<span class="font-bold text-2xl">{props.myrecipes.title || props.myrecipes.recipeName}</span>
         <ul>
-        {props.myrecipes.steps.map((steps)=>(
+        {props.myrecipes.steps.map((steps , index)=>(
 
-				<li class="subtitle">{steps.description ||  steps.stepDetails}</li>
+				<li class="subtitle" key={index}>{steps.description ||  steps.stepDetails}</li>
         ))}
         </ul>
 			</div>
 			<div class="w-full flex flex-row justify-between z-10">
-				<a class="hover:opacity-90 py-3 bg-cyan-50 w-full flex justify-center" href="#">
+				<PDFDownloadLink
+				//  <PDFDownloadLink
+				 document={<RecipePdf recipeDetails={props.myrecipes}/>}
+				 fileName="recipe.pdf"
+				 class="hover:opacity-90 py-3 bg-cyan-50 w-full flex justify-center"
+				//  style={{
+				//    textDecoration: "none",
+				//    padding: "10px",
+				//    borderRadius:'10px',
+				//    color: "#4a4a4a",
+				//    backgroundColor: "#f2f2f2",
+				//    border: "1px solid #4a4a4a"
+				//  }}
+				 >
+
+				{/* <a class="hover:opacity-90 py-3 bg-cyan-50 w-full flex justify-center" href="#"> */}
 					<svg y="0" xmlns="http://www.w3.org/2000/svg" x="0" width="100" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" height="100" class="w-6 h-6  stroke-cyan-800">
 						<path stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none" d="M18.3,65.8v4A11.9,11.9,0,0,0,30.2,81.7H69.8A11.9,11.9,0,0,0,81.7,69.8v-4M65.8,50,50,65.8m0,0L34.2,50M50,65.8V18.3" class="">
 						</path>
 					</svg>
-				</a>
+				{/* </a> */}
+				</PDFDownloadLink>
 				<a class="hover:opacity-90 py-3 bg-cyan-50 w-full flex justify-center" href="#">
 					<svg y="0" xmlns="http://www.w3.org/2000/svg" x="0" width="100" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" height="100" class="w-6 h-6  stroke-cyan-800">
 						<path stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none" d="M21.9,50h0M50,50h0m28.1,0h0M25.9,50a4,4,0,1,1-4-4A4,4,0,0,1,25.9,50ZM54,50a4,4,0,1,1-4-4A4,4,0,0,1,54,50Zm28.1,0a4,4,0,1,1-4-4A4,4,0,0,1,82.1,50Z">

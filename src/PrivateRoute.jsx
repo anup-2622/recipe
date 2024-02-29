@@ -14,4 +14,4 @@ const PrivateRoute = ({element:Element, isAuthenticated ,...rest}) => {
   
 }
 
-export default PrivateRoute
+// export default 

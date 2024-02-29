@@ -22,6 +22,7 @@ function App() {
             <Route path='/signup' element={<Signup/>}/>
             <Route path='/forgotPassword' element={<ForgotPassword/>}/>
             <Route path='/resetpassword/:token' element={<Resetpassword/>}/>
+            <Route path='/dashboard' element={<Dashboard/>}/>
              {/* <PrivateRoute path='/dashboard' element={<Dashboard />}   isAuthenticated={isAuthenticated}/> */}
           </Routes>
         </div>

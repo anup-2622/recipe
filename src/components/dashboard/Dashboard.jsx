@@ -4,21 +4,22 @@ import Viewrecipe from "./Viewrecipe";
 import axios from "axios"
 import Login from "../auth/Login";
 import {useNavigate} from "react-router-dom"
+import { PDFDownloadLink } from "@react-pdf/renderer";
 
 const Dashboard = (props) => {
   const navigate = useNavigate()
 
-  useEffect(()=>{
-    axios.get('/user/Verify')
-    .then((res)=>{
-      if(res.data.status){
+  // useEffect(()=>{
+  //   axios.get('/user/Verify')
+  //   .then((res)=>{
+  //     if(res.data.status){
 
-      }
-      else{
-        navigate("/")
-      }
-    })
-  })
+  //     }
+  //     else{
+  //       navigate("/")
+  //     }
+  //   })
+  // })
 
   const RecipeUrl = "http://localhost:9000/recipe/getAllRecipes";
   const [recipes, setRecipes] = useState([]);
@@ -39,7 +40,7 @@ const Dashboard = (props) => {
 //  console.log(props);
   return (
   <>
-{props.auth ? 
+
     <div className='items-center justify-center bg-green-400 lg:w-screen lg:flex lg:h-screen'>
 
 
@@ -47,12 +48,12 @@ const Dashboard = (props) => {
       {recipes.map((recipe)=>(
         
         <Viewrecipe key={recipe._id} myrecipes={recipe}/>
+        // <PDFDownloadLink> Download </PDFDownloadLink>
         ))}
     </div>
 
-  </div>:
-  <Login/>
-}
+  </div>
+
 </>
   );
 }
