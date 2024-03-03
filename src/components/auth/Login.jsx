@@ -1,40 +1,45 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+// import { useAuth } from "../../context/AuthProviders";
+import API from "../../APIs/API";
+import toast ,  {Toaster} from "react-hot-toast"
 // import useAuth from 
 
-
 const Login = () => {
+
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const [isAuthenticate , setIsAuthenticate] = useState(false)
 
-  // console.log(email + password);
-
   axios.defaults.withCredentials = true;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const loginData = await axios.post("http://localhost:9000/user/login", {
+      const loginData = await axios.post(API+"/user/login", {
         email,
         password,
       });
-      // console.log(loginData.data);
+      console.log( loginData.data  );
+      
+
       if (loginData.data.status) {
+        // login(loginData.data.token)
         navigate("/");
-
+        // return  ()=>{}
       }
+      toast.error("wrong password")
 
-      // console.log(response);
     } catch (error) {
       console.log(error);
     }
   };
   return (
     <div className="flex justify-center max-w-full min-h-screen bg-blue-300 login md:items-center md:justify-center md:h-screen ">
+      <Toaster/>
       <div className="flex flex-col w-full m-auto mx-2 border rounded-lg shadow-md shadow-black backdrop-blur-lg h-fit md:w-2/5 md:h-fit">
         <div className="py-2 my-2 font-serif text-3xl font-extrabold text-center text-white ">
           <p>LOGIN</p>

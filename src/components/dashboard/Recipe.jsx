@@ -1,21 +1,28 @@
-import React, { useState } from "react";
+import React, { useState   } from "react";
 import toast, { Toaster } from 'react-hot-toast';
 import axios from "axios";
-
+import {useNavigate ,Link} from 'react-router-dom'
 import { IoAddCircleOutline, IoRemoveCircleOutline } from "react-icons/io5";
+import { useAuth } from "../../context/AuthProviders";
+import API from "../../APIs/API";
+
 
 const Recipe = () => {
+
+  const navigate = useNavigate()
+
+
   const [recipeName, setRecipeName] = useState("");
   const [ingredients, setIngredients] = useState([{ name: "", quantity: "" }]);
   const [steps, setSteps] = useState([{ stepDetails: "", file: null }]);
   const [description , setDescription] = useState("");
-  const addRecipeUrl = 'http://localhost:9000/recipe/createRecipe';
 
-  
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const myRecipe = await axios.post(addRecipeUrl, {
+      const myRecipe = await axios.post(API+'/recipe/createRecipe', {
         recipeName,
         ingredients,
         steps,
@@ -54,7 +61,6 @@ const Recipe = () => {
       setIngredients(updateIngredients);
     }
   };
-
   const addIngredient = () => {
     setIngredients([...ingredients, { name: "", quantity: "" }]);
   };
@@ -71,9 +77,12 @@ const Recipe = () => {
     setSteps([...steps, { stepDetails: "", file: "" }]);
   };
 
+
+
   return (
 
     <div className="w-full h-full recipe scroll-smooth lg:h-screen lg:w-screen md:w-screen md:h-screen">
+      
       <div className="flex items-center justify-center border lg:justify-center backdrop-blur-md ">
         <div className=" lg:w-5/6">
           <div className="py-2 my-2 font-serif text-xl font-extrabold text-center text-white lg:text-center md:text-center md:text-2xl lg:text-3xl">
@@ -240,6 +249,9 @@ const Recipe = () => {
           </div>
         </div>
       </div>
+
+      <Link to='/dashborad'>Dashboard</Link>
+      
     </div>
   );
 };

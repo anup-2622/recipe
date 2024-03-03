@@ -8,11 +8,15 @@ import Recipe from './components/dashboard/Recipe';
 import Viewrecipe from './components/dashboard/Viewrecipe';
 import ForgotPassword from './components/auth/ForgotPassword';
 import Resetpassword from './components/auth/Resetpassword';
+import { AuthProviders } from './context/AuthProviders';
+
 
 
 function App() {
   
   return (
+    // <AuthProviders>
+
     <Router>
         <div>
           <Routes>
@@ -28,6 +32,7 @@ function App() {
         </div>
 
     </Router>
+    // </AuthProviders>
     );
 }
 

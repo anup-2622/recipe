@@ -14,14 +14,12 @@ const navigate = useNavigate()
           const forgotData = await axios.post("http://localhost:9000/user/forgotpassword",{
             email 
           } )
-          // console.log(forgotData);
-       
+
           if(forgotData.data.status){
          
             navigate("/login")
           }
-          // console.log(forgotData.data);
-          
+         
         }catch(error)
         {
           console.log(error)
