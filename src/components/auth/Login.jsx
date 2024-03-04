@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-// import { useAuth } from "../../context/AuthProviders";
 import API from "../../APIs/API";
 import toast ,  {Toaster} from "react-hot-toast"
+import { AuthContext } from "../../context/AuthProviders";
+
 // import useAuth from 
 
 const Login = () => {
+
+  const {login} = useContext(AuthContext)
 
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [isAuthenticate , setIsAuthenticate] = useState(false)
-
+  
   axios.defaults.withCredentials = true;
 
   const handleSubmit = async (e) => {
@@ -27,9 +29,10 @@ const Login = () => {
       
 
       if (loginData.data.status) {
-        // login(loginData.data.token)
-        navigate("/");
-        // return  ()=>{}
+     
+        login(loginData.data.token, loginData.data.user);
+        navigate("/demo");
+ 
       }
       toast.error("wrong password")
 

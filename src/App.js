@@ -8,18 +8,19 @@ import Recipe from './components/dashboard/Recipe';
 import Viewrecipe from './components/dashboard/Viewrecipe';
 import ForgotPassword from './components/auth/ForgotPassword';
 import Resetpassword from './components/auth/Resetpassword';
-import { AuthProviders } from './context/AuthProviders';
+import { AuthProviders, useAuth } from './context/AuthProviders';
 import Index from './components/dashboard/Index';
+import Demo from './components/dashboard/Demo';
 
 
 
 function App() {
-  
+
   return (
-    // <AuthProviders>
+    <AuthProviders>
 
     <Router>
-        <div>
+      
           <Routes>
             {/* <Route path='/'  element={<Dashboard auth={isAuthenticated}/>}/> */}
             <Route path='/' element={<Index/>}/>
@@ -28,12 +29,12 @@ function App() {
             <Route path='/forgotPassword' element={<ForgotPassword/>}/>
             <Route path='/resetpassword/:token' element={<Resetpassword/>}/>
             <Route path='/dashboard' element={<Dashboard/>}/>
+            <Route path='/demo' element={<Demo/>}/>
              {/* <PrivateRoute path='/dashboard' element={<Dashboard />}   isAuthenticated={isAuthenticated}/> */}
           </Routes>
-        </div>
-
+    
     </Router>
-    // </AuthProviders>
+    </AuthProviders>
     );
 }
 
