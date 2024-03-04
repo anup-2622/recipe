@@ -9,6 +9,7 @@ import Viewrecipe from './components/dashboard/Viewrecipe';
 import ForgotPassword from './components/auth/ForgotPassword';
 import Resetpassword from './components/auth/Resetpassword';
 import { AuthProviders } from './context/AuthProviders';
+import Index from './components/dashboard/Index';
 
 
 
@@ -21,7 +22,7 @@ function App() {
         <div>
           <Routes>
             {/* <Route path='/'  element={<Dashboard auth={isAuthenticated}/>}/> */}
-            <Route path='/' element={<Recipe/>}/>
+            <Route path='/' element={<Index/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/signup' element={<Signup/>}/>
             <Route path='/forgotPassword' element={<ForgotPassword/>}/>

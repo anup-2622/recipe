@@ -91,7 +91,7 @@ const Dashboard = (props) => {
         </div>
       </div>
      <div>
-      <button className="bg-purple-600 border rounded-sm btn">Log Out</button>
+
      </div>
     </>
   );
