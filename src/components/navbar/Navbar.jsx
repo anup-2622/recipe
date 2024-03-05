@@ -24,6 +24,7 @@ export function Navbar() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
+  
 
   return (
     <navbar className="relative w-full bg-white">

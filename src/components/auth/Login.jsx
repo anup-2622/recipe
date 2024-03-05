@@ -29,10 +29,8 @@ const Login = () => {
       
 
       if (loginData.data.status) {
-     
-        login(loginData.data.token, loginData.data.user);
+        login(loginData.data.user, loginData.data.token);
         navigate("/demo");
- 
       }
       toast.error("wrong password")
 

@@ -4,22 +4,26 @@ import {Navigate} from 'react-router-dom'
 
 const Demo = () => {
     // const navigate = useNavigate()
-    const {token , user} = useContext(AuthContext)
-    console.log(user);
+    const {isAuthenticated , user} = useContext(AuthContext)
+    // console.log(user);
+    // console.log(isAuthenticated);
 
-    const isLoggedin = !!token;
-    useEffect(()=>{
-        if(isLoggedin)
-        {
+    // const isLoggedin = !!token;
+    // useEffect(()=>{
+    //     if(isLoggedin)
+    //     {
 
-            console.log("Hello");
-        }
+    //         console.log("Hello");
+    //     }
 
-    },[])
+    // },[])
     
   return (
     <div>
-        {isLoggedin ? <div> Hello {user.name} to the private Demo</div>:
+        {isAuthenticated()
+         ?
+          <div> Hello {user.name} to the private Demo</div>
+          :
    <Navigate to='/login'/>
 
         }
