@@ -17,7 +17,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   
   axios.defaults.withCredentials = true;
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -25,17 +24,18 @@ const Login = () => {
         email,
         password,
       });
-      console.log( loginData.data  );
-      
 
       if (loginData.data.status) {
         login(loginData.data.user, loginData.data.token);
         navigate("/demo");
       }
-      toast.error("wrong password")
-
     } catch (error) {
-      console.log(error);
+      
+      if (error.response && error.response.status === 401) {
+        toast.error("Wrong password");
+      } else {
+        console.error("Login error:", error);
+      }
     }
   };
   return (

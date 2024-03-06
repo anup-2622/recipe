@@ -21,10 +21,7 @@ const AuthProviders = ({ children }) => {
       }
     }
   }, []);
-  // const login = (token, user) => {
-  //   setToken(token);
-  //   setUser(user);
-  // };
+ 
 
   const login = (userData, authToken) => {
     setUser(userData);
