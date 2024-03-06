@@ -28,7 +28,7 @@ export function Navbar() {
 
   return (
     <navbar className="relative w-full bg-white">
-      <div className="flex items-center justify-between px-4 py-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div className="flex items-center justify-between px-4 py-2 mx-auto text-white max-w-7xl sm:px-6 lg:px-8">
         <div className="inline-flex items-center space-x-2">
           <span>
             <svg
@@ -52,7 +52,7 @@ export function Navbar() {
               <li key={item.name}>
                 <a
                   href={item.href}
-                  className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900"
+                  className="inline-flex items-center text-sm font-semibold text-gray-100 hover:text-gray-300"
                 >
                   {item.name}
                   <span>
@@ -66,13 +66,13 @@ export function Navbar() {
         <div className="hidden space-x-2 lg:block">
           <button
             type="button"
-            className="px-3 py-2 text-sm font-semibold text-black bg-transparent rounded-md hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            className="px-3 py-2 text-sm font-semibold text-gray-100 bg-transparent rounded-md hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
           >
             <Link to='/signup'> Sign In</Link>
           </button>
           <button
             type="button"
-            className="px-3 py-2 text-sm font-semibold text-black border border-black rounded-md shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            className="px-3 py-2 text-sm font-semibold text-gray-100 border border-gray-100 rounded-md shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
           >
             <Link to='/login'>Log in</Link>
           </button>

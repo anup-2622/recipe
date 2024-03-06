@@ -2,9 +2,7 @@ import { PDFDownloadLink } from '@react-pdf/renderer';
 import React from 'react'
 import RecipePdf from './RecipePdf';
 
-const Viewrecipe = (props) => {
-// console.log(props);
-
+const Viewrecipe = (props) => {	
   return (
   <div className="bg-red-300 lg:w-fit lg:h-fit">
   	<div class="group overflow-hidden bg-neutral-50 rounded-xl bg-gradient-to-tr from-cyan-800 via-cyan-700 to-cyan-500 text-gray-50">

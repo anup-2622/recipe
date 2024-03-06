@@ -10,8 +10,6 @@ import API from "../../APIs/API";
 const Recipe = () => {
 
   const navigate = useNavigate()
-
-
   const [recipeName, setRecipeName] = useState("");
   const [ingredients, setIngredients] = useState([{ name: "", quantity: "" }]);
   const [steps, setSteps] = useState([{ stepDetails: "", file: null }]);

@@ -27,7 +27,7 @@ const Login = () => {
 
       if (loginData.data.status) {
         login(loginData.data.user, loginData.data.token);
-        navigate("/demo");
+        navigate("/dashboard");
       }
     } catch (error) {
       
